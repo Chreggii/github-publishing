@@ -6,7 +6,7 @@
     "start": "ng serve",
     "build": "ng build",
     "build:prod": "ng build --configuration production",
-    "deploy": "ng deploy --base-href=/github-publishing/",
+    "deploy": "ng deploy --base-href=/github-publishing/ --no-silent",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
