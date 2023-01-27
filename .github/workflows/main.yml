@@ -22,6 +22,9 @@ jobs:
       - name: Lint
         run: yarn lint
 
+      - name: Check Format
+        run: yarn ci:format
+
       - name: Tests
         run: yarn ci:test
 

@@ -1,4 +1,17 @@
 {
   // For more information, visit: https://go.microsoft.com/fwlink/?linkid=827846
-  "recommendations": ["angular.ng-template"]
+  "recommendations": [
+    "alexiv.vscode-angular2-files",
+    "angular.ng-template",
+    "infinity1207.angular2-switcher",
+    "streetsidesoftware.code-spell-checker",
+    "hediet.vscode-drawio",
+    "dbaeumer.vscode-eslint",
+    "yzhang.markdown-all-in-one",
+    "davidanson.vscode-markdownlint",
+    "jebbs.plantuml",
+    "stylelint.vscode-stylelint",
+    "rbbit.typescript-hero",
+    "esbenp.prettier-vscode"
+  ]
 }
