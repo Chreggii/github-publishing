@@ -1,24 +1,51 @@
-name: Angular GitHub CI
+name: CI / CD for Angular
 on:
   push:
     branches:
       - main
 
 jobs:
-  ci:
+  build-and-deploy:
     runs-on: ubuntu-latest
-
-    strategy:
-      matrix:
-        node-version: [16.x]
-
     steps:
-      - uses: actions/checkout@v2
+      - name: Checkout
+        uses: actions/checkout@v3
 
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v1
+      - name: Set up node.js
+        uses: actions/setup-node@v3.3.0
         with:
-          node-version: ${{ matrix.node-version }}
+          node-version: '16'
+          # cache: 'npm'
+
+      - name: Install dependencies
+        run: yarn
+
+      - name: Build
+        run: yarn build:prod
+
+      - name: Deploy to GitHub Pages
+        uses: crazy-max/ghaction-github-pages@v3
+        with:
+          target_branch: gh-pages
+          build_dir: dist/github-publishing
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+# jobs:
+#   ci:
+#     runs-on: ubuntu-latest
+
+#     strategy:
+#       matrix:
+#         node-version: [16.x]
+
+#     steps:
+#       - uses: actions/checkout@v2
+
+#       - name: Use Node.js ${{ matrix.node-version }}
+#         uses: actions/setup-node@v1
+#         with:
+#           node-version: ${{ matrix.node-version }}
 
       # - name: Cache node modules
       #   id: cache-nodemodules
@@ -34,14 +61,14 @@ jobs:
       #       ${{ runner.os }}-build-
       #       ${{ runner.os }}-
 
-      - name: Install Dependencies
-        # if: steps.cache-nodemodules.outputs.cache-hit != 'true'
-        run: |
-          yarn
+      # - name: Install Dependencies
+      #   # if: steps.cache-nodemodules.outputs.cache-hit != 'true'
+      #   run: |
+      #     yarn
 
-      - name: Build
-        run: |
-          yarn build:prod
+      # - name: Build
+      #   run: |
+      #     yarn build:prod
 
       # - name: Lint
       #   run: |
@@ -68,7 +95,7 @@ jobs:
       #     release_name: ${{ steps.changelog.outputs.tag }}
       #     body: ${{ steps.changelog.outputs.clean_changelog }}
 
-      - name: Deploy
-        run: |
-          yarn deploy
+      # - name: Deploy
+      #   run: |
+      #     yarn deploy
 
