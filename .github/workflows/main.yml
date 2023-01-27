@@ -28,10 +28,13 @@ jobs:
       - name: Tests
         run: yarn ci:test
 
+      - name: Set Environment Variable
+        run: |
+          export test=${{ secrets.TEST }}
+          ng run github-publishing:collect-vars
+
       - name: Build
         run: yarn ci:build
-        env:
-          WEATHER_API_KEY: ${{ secrets.WEATHER_API_KEY }}
 
       - name: Deploy to GitHub Pages
         uses: crazy-max/ghaction-github-pages@v3
