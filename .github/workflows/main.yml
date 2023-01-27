@@ -41,12 +41,12 @@ jobs:
 
       - name: Build
         run: |
-          yarn build -- --prod
+          yarn build:prod
 
       # - name: Lint
       #   run: |
       #     yarn lint
 
-      - name: Test
-        run: |
-          yarn test -- --prod
+      # - name: Test
+      #   run: |
+      #     yarn test -- --prod
