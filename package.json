@@ -5,14 +5,12 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
-    "build:prod": "ng build --base-href=/github-publishing/",
-    "deploy": "ng deploy --base-href=/github-publishing/ --no-silent",
+    "build:prod": "ng build --configuration production --base-href=/github-publishing/",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
   "private": true,
   "dependencies": {
-    "@angular-eslint/schematics": "1.0.0",
     "@angular/animations": "^14.2.0",
     "@angular/common": "^14.2.0",
     "@angular/compiler": "^14.2.0",
