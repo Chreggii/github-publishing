@@ -30,7 +30,8 @@ jobs:
 
       - name: Build
         run: yarn ci:build
-        env: WEATHER_API_KEY: ${{ secrets.WEATHER_API_KEY }}
+        env:
+          WEATHER_API_KEY: ${{ secrets.WEATHER_API_KEY }}
 
       - name: Deploy to GitHub Pages
         uses: crazy-max/ghaction-github-pages@v3
@@ -39,4 +40,3 @@ jobs:
           build_dir: dist/github-publishing
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
