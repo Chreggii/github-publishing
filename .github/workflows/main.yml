@@ -31,7 +31,7 @@ jobs:
       - name: Set Environment Variable
         run: |
           export test=${{ secrets.TEST }}
-          ng run github-publishing:collect-vars
+          ./node_modules/.bin/ng run github-publishing:collect-vars
 
       - name: Build
         run: yarn ci:build
